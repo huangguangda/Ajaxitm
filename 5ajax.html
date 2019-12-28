@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-2.1.3.min.js"></script>
+<script>
+
+$.ajax({
+	url : 'data.php',
+	type : 'POST',
+	data : {username:"dada"},
+	dataType : 'json',
+	async : false,
+	success : function(data){   //xhr.responseText
+		console.log(data);
+		//var obj = JSON.parse(data);
+		//console.log(obj);
+	},
+	error : function(err){
+		console.log(err.status);
+		console.log(err.statusText);
+	}
+});
+console.log(123);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

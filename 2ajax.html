@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+</head>
+
+<body>
+<form action="reg.php" method="post">
+	用户名 : <input id="input1" type="text" name="username">   <!--username=dada-->
+    <input type="submit" value="注册">
+</form>
+<div id="div1"></div>
+<script>
+var oInput = document.getElementById('input1');
+var oDiv = document.getElementById('div1');
+
+oInput.onblur = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','user.php?username='+encodeURIComponent(this.value),true);
+	xhr.onreadystatechange = function(){
+		
+		if(xhr.readyState == 4){
+			//console.log(xhr.status);
+			//console.log(xhr.statusText);
+			if(xhr.status == 200){
+				//console.log(xhr.responseText);
+				//console.log(JSON.parse(xhr.responseText));
+				var obj = JSON.parse(xhr.responseText);
+				if(obj.code){
+					oDiv.innerHTML = obj.message;
+				}
+				else{
+					oDiv.innerHTML = obj.message;
+				}
+			}
+		}
+		
+	};
+	xhr.send(null);
+};
+
+</script>
+</body>
+</html>
